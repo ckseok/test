@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>MVP A/B Test Router</title>
+<!-- ▼ GA4: 측정ID로 교체 (G-WY11P7PXE2) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-WY11P7PXE2"></script>
+<script>
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-WY11P7PXE2');
+</script>
+<style>html,body{height:100%;margin:0;font-family:ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Helvetica,Arial;display:grid;place-items:center}</style>
+</head>
+<body>
+<div>라우팅 중입니다…</div>
+<script>
+(function() {
+const KEY = 'ab_variant';
+let v = localStorage.getItem(KEY);
+if (!v) {
+v = Math.random() < 0.5 ? 'A' : 'B';
+localStorage.setItem(KEY, v);
+}
+// GA4 사용자 속성으로 변형 기록
+if (window.gtag) {
+gtag('set', 'user_properties', { ab_variant: v });
+}
+// 변형으로 라우팅
+location.replace(v === 'A' ? '/landing-a.html' : '/landing-b.html');
+})();
+</script>
+</body>
+</html>
