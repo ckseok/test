@@ -1,12 +1,21 @@
-# netlify.toml
+# netlify.toml (improved caching)
 [build]
-publish = "."
+  publish = "."
 
-
+# Do NOT aggressively cache HTML (avoid serving stale variants/UTM handling)
 [[headers]]
-for = "/*"
-[headers.values]
-X-Frame-Options = "SAMEORIGIN"
-X-Content-Type-Options = "nosniff"
-Referrer-Policy = "strict-origin-when-cross-origin"
-Cache-Control = "public, max-age=600"
+  for = "/*.html"
+  [headers.values]
+    Cache-Control = "no-cache, no-store, must-revalidate"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+    X-Frame-Options = "SAMEORIGIN"
+    X-Content-Type-Options = "nosniff"
+
+# Cache static assets longer
+[[headers]]
+  for = "/assets/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+    X-Frame-Options = "SAMEORIGIN"
+    X-Content-Type-Options = "nosniff"

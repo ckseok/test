@@ -25,7 +25,8 @@
 
     // 1) 쿼리로 강제 분기 허용 (?v=A|B)
     const forced = url.searchParams.get('v');
-    let v = localStorage.getItem(KEY);
+    let v = null;
+    try { v = localStorage.getItem(KEY); } catch(e){}
 
     if (forced === 'A' || forced === 'B') {
       v = forced;
