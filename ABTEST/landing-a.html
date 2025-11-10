@@ -1,0 +1,88 @@
+<!doctype html>
+</h1>
+<p class="mt-5 text-neutral-300 md:text-lg">코드 없이 10분 만에 워크플로를 구성하고, 실시간 분석으로 성과를 추적하세요. 지금 시작하면 14일 무료.</p>
+<div class="mt-8 flex flex-col sm:flex-row gap-4">
+<a id="cta" href="#" class="inline-flex items-center justify-center px-6 py-3 rounded-2xl bg-indigo-500 hover:bg-indigo-400 text-white font-medium shadow-lg shadow-indigo-500/30">무료로 시작하기</a>
+<a href="#features" class="inline-flex items-center justify-center px-6 py-3 rounded-2xl bg-white/10 hover:bg-white/20">제품 둘러보기</a>
+</div>
+<p class="mt-4 text-sm text-neutral-400">신용카드 필요 없음 · 3분 설치</p>
+</div>
+<div class="relative">
+<div class="aspect-[4/3] rounded-3xl bg-gradient-to-br from-indigo-700/20 to-fuchsia-600/20 border border-white/10 overflow-hidden"></div>
+</div>
+</section>
+
+
+<!-- Social proof -->
+<section class="max-w-7xl mx-auto px-6 py-10">
+<p class="text-neutral-400 text-sm">200+ 팀이 Rise로 매주 평균 7.2시간을 절약하고 있습니다.</p>
+</section>
+
+
+<!-- Features -->
+<section id="features" class="max-w-7xl mx-auto px-6 py-16">
+<div class="grid md:grid-cols-3 gap-8">
+<div class="p-6 rounded-2xl bg-white/5 border border-white/10">
+<h3 class="text-xl font-semibold mb-2">드래그 앤 드롭 빌더</h3>
+<p class="text-neutral-300">코드 없이 워크플로 설계. 조건, 반복, 지연, 에러 처리까지 시 بص.</p>
+</div>
+<div class="p-6 rounded-2xl bg-white/5 border border-white/10">
+<h3 class="text-xl font-semibold mb-2">150+ 커넥터</h3>
+<p class="text-neutral-300">Slack, Gmail, Notion, Sheets 등과 즉시 연동.</p>
+</div>
+<div class="p-6 rounded-2xl bg-white/5 border border-white/10">
+<h3 class="text-xl font-semibold mb-2">실시간 분석</h3>
+<p class="text-neutral-300">성공률·처리시간·절감 비용을 대시보드로 추적.</p>
+</div>
+</div>
+</section>
+
+
+<!-- Pricing (축약) -->
+<section id="pricing" class="max-w-7xl mx-auto px-6 pb-20">
+<div class="grid md:grid-cols-2 gap-8">
+<div class="p-6 rounded-2xl bg-white/5 border border-white/10">
+<h3 class="text-2xl font-bold">Starter</h3>
+<p class="text-neutral-300">개인/소규모 팀</p>
+<p class="mt-4 text-3xl font-extrabold">₩0</p>
+<ul class="mt-4 text-neutral-300 list-disc list-inside">
+<li>기본 워크플로 3개</li>
+<li>필수 커넥터</li>
+</ul>
+</div>
+<div class="p-6 rounded-2xl bg-indigo-500/10 border border-indigo-500/30">
+<h3 class="text-2xl font-bold">Pro</h3>
+<p class="text-neutral-300">성장 중인 팀</p>
+<p class="mt-4 text-3xl font-extrabold">₩29,000 <span class="text-sm text-neutral-400">/월</span></p>
+<ul class="mt-4 text-neutral-300 list-disc list-inside">
+<li>무제한 워크플로</li>
+<li>고급 커넥터 + SLA</li>
+</ul>
+</div>
+</div>
+</section>
+
+
+<!-- CTA -->
+<section class="max-w-7xl mx-auto px-6 pb-24 text-center">
+<a id="cta-secondary" href="#" class="inline-flex items-center justify-center px-8 py-4 rounded-2xl bg-white text-neutral-900 hover:bg-neutral-200 font-semibold">14일 무료 체험</a>
+</section>
+</main>
+
+
+<footer class="border-t border-white/10">
+<div class="max-w-7xl mx-auto px-6 py-8 text-sm text-neutral-400">© 2025 Rise. All rights reserved.</div>
+</footer>
+
+
+<script>
+document.addEventListener('DOMContentLoaded', function(){
+ABTest.setUserProp();
+const mainCTA = document.getElementById('cta');
+const secCTA = document.getElementById('cta-secondary');
+mainCTA && mainCTA.addEventListener('click', function(e){ e.preventDefault(); ABTest.trackCTA('primary'); alert('가입 플로우로 연결(예시)'); });
+secCTA && secCTA.addEventListener('click', function(e){ e.preventDefault(); ABTest.trackCTA('secondary'); alert('가입 플로우로 연결(예시)'); });
+});
+</script>
+</body>
+</html>
