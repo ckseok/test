@@ -105,19 +105,37 @@
 
 <script>
 document.addEventListener('DOMContentLoaded', function(){
-  ABTest.initFor('A');
-  const mainCTA = document.getElementById('cta');
-  const secCTA  = document.getElementById('cta-secondary');
-  mainCTA && mainCTA.addEventListener('click', function(e){
-    e.preventDefault();
-    ABTest.trackCTA('primary');
+
+  // Wait for GA4 gtag to be ready, then init user_properties
+  (function waitForGtag(attempts){ 
+    if (typeof window.gtag === 'function') {
+      console.log('[ABTest] gtag ready, init variant A');
+      ABTest.initFor('A');
+    } else if (attempts < 10) {
+      console.log('[ABTest] gtag not ready, retry...', attempts);
+      setTimeout(function(){ waitForGtag(attempts+1); }, 200);
+    } else {
+      console.warn('[ABTest] gtag not available, init anyway');
+      ABTest.initFor('A');
+    }
+  })(0);
+
+  function handle(label, e) {
+    if (e) e.preventDefault();
+    try {
+      ABTest.trackCTA(label);
+      console.log('[ABTest] cta_click sent with label=', label);
+    } catch(err) {
+      console.error('[ABTest] trackCTA error', err);
+    }
     alert('가입 플로우로 연결(예시)');
-  });
-  secCTA && secCTA.addEventListener('click', function(e){
-    e.preventDefault();
-    ABTest.trackCTA('secondary');
-    alert('가입 플로우로 연결(예시)');
-  });
+  }
+
+  var mainCTA = document.getElementById('cta');
+  var secCTA  = document.getElementById('cta-secondary');
+
+  if (mainCTA) mainCTA.addEventListener('click', function(e){ handle('primary', e); });
+  if (secCTA)  secCTA .addEventListener('click', function(e){ handle('secondary', e); });
 });
 </script>
 </body>
